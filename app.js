@@ -128,6 +128,12 @@ app.get("/about",function(req,res){
   res.render("about");
 });
 
-app.listen(2000, function () {
+let port = process.env.PORT;
+if (port == null || port ==""){
+  port = 2000;
+}
+app.listen(port);
+
+app.listen(port, function () {
   console.log("Server running on 2000");
 });

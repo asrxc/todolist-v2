@@ -9,7 +9,7 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-mongoose.connect("mongodb://localhost:27017/todolistDB",{useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect("mongodb+srv://admin-asr:Admin@123@cluster0.sbpka.mongodb.net/?retryWrites=true&w=majority/todolistDB",{useNewUrlParser: true, useUnifiedTopology: true});
 
 const itemsSchema = {
   name: String
@@ -117,7 +117,6 @@ app.get("/:customListName",function(req,res){
           list.save();
           res.redirect("/"+customListName);
         }else{
-          //show an existing list
           res.render("list", {listTitle: foundList.name, newListItems: foundList.items});
         }
       }
